@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+            background-image: url("red.jpg");
+        }
+        #valentine-gif {
+            max-width: 100%;
+            height: auto;
+        }
+        #btn-yes, #btn-no {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+        }
+        #btn-yes {
+            background-color: #4CAF50;
+            color: white;
+            transition: transform 0.2s;
+        }
+        #btn-no {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will You Be My Valentine?</h1>
+    <img id="valentine-gif" src="waiting.gif" alt="Valentine's Day GIF">
+    <br>
+    <button id="btn-yes">Yes</button>
+    <button id="btn-no">No</button>
+    <script>
+        const yesButton = document.getElementById('btn-yes');
+        const noButton = document.getElementById('btn-no');
+        const valentineGif = document.getElementById('valentine-gif');
+        const phrases = [
+            "Are you sure you want to break my heart?",
+            "But why would you say no?",
+            "I thought we had something special...",
+            "Is there someone else?",
+            "Maybe next time?",
+            "You're breaking my heart...",
+            "I'll find someone else...",
+            "I'll be okay... eventually.",
+            "I guess it wasn't meant to be.",
+            "Well, happy Valentine's Day anyway."
+        ];
+
+        let clickCount = 0;
+
+        noButton.addEventListener('click', () => {
+            clickCount++;
+            if (clickCount <= phrases.length) {
+                noButton.innerText=phrases[clickCount - 1];
+                // alert(phrases[clickCount - 1]);
+                // Increase the size of the Yes button
+                let currentSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
+                currentSize = parseFloat(currentSize);
+                yesButton.style.fontSize = (currentSize * 2.1) + 'px';
+            }
+            if (clickCount === phrases.length) {
+                clickCount = 0; // Reset click count
+            }
+        });
+
+        yesButton.addEventListener('click', () => {
+            // Change the GIF
+            valentineGif.src = "final.gif";
+            // Hide buttons
+            yesButton.style.display = "none";
+            noButton.style.display = "none";
+            // Change h1 text
+            document.querySelector('h1').textContent = "Thank you!";
+        });
+    </script>
+</body>
+</html>

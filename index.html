@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ahem</title>
+    <style>
+        /* Center the card */
+        .centered-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Align text in center and make it bold */
+        #text-display {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Style the button */
+        #next-button {
+            background-color: palevioletred;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #next-button:hover {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-card">
+        <p id="text-display" class="centered-text">ahem.</p>
+        <button id="next-button">Next</button>
+    </div>
+
+    <script>
+        var texts = [
+            "Gannu...",
+            "Meri Shona...",
+            "Darling.....",
+            "oh meri jaan....",
+            "sunoo zaraa...."
+        ];
+
+        var currentIndex = 0;
+        var button = document.getElementById("next-button");
+        var textDisplay = document.getElementById("text-display");
+
+        button.addEventListener("click", function() {
+            if (currentIndex < 5) {
+                textDisplay.textContent = texts[currentIndex];
+                currentIndex++;
+            } else {
+                // Redirect to the next page
+                window.location.href = "page.html";
+            }
+        });
+    </script>
+</body>
+</html>
